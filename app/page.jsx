@@ -1,5 +1,6 @@
 import Photo from "@/components/Photo";
 import Rede from "@/components/Rede";
+import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
@@ -15,10 +16,7 @@ const Home = () => {
           Olá Eu sou <br/> <span className="text-accent">Jonathas Vinicius</span>
         </h1>
         <p className="max-w-[500px] mb-9 text-white/80"> 
-        Estamos entusiasmados em apresentar o nosso novo projeto, 
-        uma plataforma criada para oferecer a melhor experiência possível para você.
-        Nosso objetivo é fornecer informações, serviços e produtos de alta qualidade 
-        que atendam às suas necessidades.
+        Sou Desenvolvedor Full Stack, Monitor de Engenharia de Software e Bolsista de Inovação e Tecnologia no STI-LABS. Participo de um projeto voluntário na @SouJunior Labs, onde contribuo para a criação de uma API destinada ao desenvolvimento de um site de delivery para a comunidade da @SouJunior. Além disso, participei de um projeto de iniciação científica com bolsa de pesquisa, no qual desenvolvi scripts em Python para análise de dados e um dashboard no Looker Studio, focado nos indicadores de Relações Étnico-Raciais para apreciação da comunidade.
         </p>
         {/* botão e redes Rede */}
         <div className="flex flex-col xl:flex-row items-center gap-8">
@@ -41,6 +39,7 @@ const Home = () => {
       </div>
       </div>
       </div>
+      <Stats />
     </section>
   );
 }

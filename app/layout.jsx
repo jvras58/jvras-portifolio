@@ -14,7 +14,7 @@ const jetbrains_Mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Jvras.dev",
+  title: "Jvras@dev",
   description: "Portifolio of Jvras",
 };
 
