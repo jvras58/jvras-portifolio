@@ -1,7 +1,7 @@
 "use client";
 
-import { BsArrowDown, BsArrowDownRight } from "react-icons/bs";
-import Link from "next/link"; // Import the Link component from next/link
+import { BsArrowDownRight } from "react-icons/bs";
+import Link from "next/link";
 
 
 const services = [
