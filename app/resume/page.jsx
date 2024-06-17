@@ -6,15 +6,15 @@ import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 //Sobre mim
 const about = {
     title: "Sobre mim",
-    description: "Desenvolvedor Full Stack, Monitor de Engenharia de Software e Bolsista de Inovação e Tecnologia no STI-LABS.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     info: [
-        { fieldName: "Nome", fieldValue: "Jonathas Vinicius - Jvras" },
+        { fieldName: "Nome", fieldValue: "Jonathas Vinicius" },
         { fieldName: "Telefone", fieldValue: "(+55) 81 9 8301-9618"},
         { fieldName: "Experiencia", fieldValue: "5 anos"},
         { fieldName: "Nacionalidade", fieldValue: "Brasileiro"},
         { fieldName: "Email", fieldValue: "jonathas.vinicius@ufpe.br"},
         { fieldName: "freelancer", fieldValue: "Disponível"},
-        { fieldName: "Projeto Voluntario", fieldValue: "Hamper @SouJunior Labs"},
+        { fieldName: "Voluntario", fieldValue: "Hamper @SouJunior Labs"},
     ]
 };
 
@@ -191,29 +191,44 @@ const Resume = () => {
                     <h3 className="text-4xl font-bold">{skills.title}</h3>
                     <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
                     {skills.skillList.map((skill, index) => {
-                        return <li key={index}>
-                            <TooltipProvider className="delayDuration=[100]">
-                                <Tooltip>
-                                    <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center">
-                                        <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                        {skill.Icon}
-                                        </div>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>{skill.name}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                        </li>
+                        return ( 
+                            <li key={index}>
+                                <TooltipProvider delayDuration={100}>
+                                    <Tooltip>
+                                        <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                                            <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                            {skill.Icon}
+                                            </div>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p className="capitalize">{skill.name}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            </li>
+                        );
                     })}
                 </ul>
             </div>
         </TabsContent>
-        {/* sobre min */}
-        <TabsContent value="about" className="w-full">
-            Sobre min
+        {/* sobre mim TODO: AJUSTAR VISUALIZAÇÃO */}
+        <TabsContent value="about" className="w-full text-center xl:text-left">
+            <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] tex-white/60 mx-auto xl:mx-0">{about.description}</p>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                    {about.info.map((info, index) => {
+                        return (
+                            <li key={index} className="flex items-center justify-center xl:justify-start gap-2">
+                                <span className="text-white/60">{info.fieldName}</span>
+                                <span className="text-accent">{info.fieldValue}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </TabsContent>
         </div>
         </Tabs>
