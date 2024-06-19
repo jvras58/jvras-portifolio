@@ -1,7 +1,8 @@
 "use client";
 
-import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython } from "react-icons/fa";
+import { SiTailwindcss, SiNextdotjs, SiFastapi, SiFlask, SiPostgresql, SiMysql, SiPytest, SiSqlite, SiSqlalchemy } from "react-icons/si";
+
 
 //Sobre mim
 const about = {
@@ -102,6 +103,38 @@ const skills = {
         {
             Icon: <FaFigma />,
             name: "Figma",
+        },
+        {
+            Icon: <FaPython />,
+            name: "Python",
+        },
+        {
+            Icon: <SiFastapi />,
+            name: "FastAPI",
+        },
+        {
+            Icon: <SiFlask />,
+            name: "Flask",
+        },
+        {
+            Icon: <SiPostgresql />,
+            name: "Postgresql",
+        },
+        {
+            Icon: <SiMysql />,
+            name: "Mysql",
+        },
+        {
+            Icon: <SiPytest />,
+            name: "Pytest",
+        },
+        {
+            Icon: <SiSqlite />,
+            name: "Sqlite",
+        },
+        {
+            Icon: <SiSqlalchemy />,
+            name: "Sqlalchemy",
         },
     ]
 };
