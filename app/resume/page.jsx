@@ -72,6 +72,48 @@ const skills = {
     title: "Habilidades",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     skillList: [
+
+        //back-end
+        {
+            Icon: <FaPython />,
+            name: "Python",
+        },
+        {
+            Icon: <FaNodeJs />,
+            name: "Node.js",
+        },
+        {
+            Icon: <SiFastapi />,
+            name: "FastAPI",
+        },
+        {
+            Icon: <SiFlask />,
+            name: "Flask",
+        },
+        {
+            Icon: <SiPostgresql />,
+            name: "Postgresql",
+        },
+        {
+            Icon: <SiMysql />,
+            name: "Mysql",
+        },
+        {
+            Icon: <SiSqlite />,
+            name: "Sqlite",
+        },
+        {
+            Icon: <SiSqlalchemy />,
+            name: "Sqlalchemy",
+        },
+
+        // testing
+        {
+            Icon: <SiPytest />,
+            name: "Pytest",
+        },
+
+        // front-end
         {
             Icon: <FaHtml5 />,
             name: "HTML 5",
@@ -96,45 +138,11 @@ const skills = {
             Icon: <SiNextdotjs />,
             name: "Next.js",
         },
-        {
-            Icon: <FaNodeJs />,
-            name: "Node.js",
-        },
+
+        // design
         {
             Icon: <FaFigma />,
             name: "Figma",
-        },
-        {
-            Icon: <FaPython />,
-            name: "Python",
-        },
-        {
-            Icon: <SiFastapi />,
-            name: "FastAPI",
-        },
-        {
-            Icon: <SiFlask />,
-            name: "Flask",
-        },
-        {
-            Icon: <SiPostgresql />,
-            name: "Postgresql",
-        },
-        {
-            Icon: <SiMysql />,
-            name: "Mysql",
-        },
-        {
-            Icon: <SiPytest />,
-            name: "Pytest",
-        },
-        {
-            Icon: <SiSqlite />,
-            name: "Sqlite",
-        },
-        {
-            Icon: <SiSqlalchemy />,
-            name: "Sqlalchemy",
         },
     ]
 };
