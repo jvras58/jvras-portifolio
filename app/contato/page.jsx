@@ -19,17 +19,17 @@ const info = [
     {
         icon: <FaPhoneAlt />,
         title: 'Telefone',
-        description: '000000000000'
+        description: '(+55) 81 98301-9618'
     },
     {
         icon: <FaEnvelope />,
         title: 'Email',
-        description: 'XXX@XXXX'
+        description: 'Jonathas.vinicius@ufpe.br'
     },
     {
         icon: <FaMapMarkedAlt />,
         title: 'Endereço',
-        description: 'Lorem ipsum dolor sit amet'
+        description: 'Camaragibe - PE, Brasil'
     }
 ];
 
