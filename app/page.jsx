@@ -16,7 +16,7 @@ const Home = () => {
           Olá Eu sou <br/> <span className="text-accent">Jonathas Vinicius</span>
         </h1>
         <p className="max-w-[500px] mb-9 text-white/80"> 
-        Sou Desenvolvedor Full Stack, Monitor de Engenharia de Software e Bolsista de Inovação e Tecnologia no STI-LABS. Participo de um projeto voluntário na @SouJunior Labs, onde contribuo para a criação de uma API destinada ao desenvolvimento de um site de delivery para a comunidade da @SouJunior. Além disso, participei de um projeto de iniciação científica com bolsa de pesquisa, no qual desenvolvi scripts em Python para análise de dados e um dashboard no Looker Studio, focado nos indicadores de Relações Étnico-Raciais para apreciação da comunidade.
+        Sou Desenvolvedor Full Stack, Monitor de Engenharia de Software e Bolsista de Inovação e Tecnologia no STI-LABS. Participo de um projeto voluntário na @SouJunior Labs.
         </p>
         {/* botão e redes Rede */}
         <div className="flex flex-col xl:flex-row items-center gap-8">

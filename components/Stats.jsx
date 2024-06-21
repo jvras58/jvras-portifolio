@@ -4,9 +4,9 @@ import CountUp from "react-countup";
 
 // TODO: Descobrir como pegar os dados reais do github e gitlab
 const stats = [
-    { num: 5, text: "Anos de experiência" },
-    { num: 30, text: "Projetos concluídos" },
-    { num: 10, text: "Tecnologias" },
+    { num: 3, text: "Anos de experiência" },
+    { num: 10, text: "Projetos concluídos" },
+    { num: 11, text: "Tecnologias" },
     { num: 100, text: "Code Commits" },
     ];
 
