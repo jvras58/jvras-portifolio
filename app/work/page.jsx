@@ -41,18 +41,19 @@ const Work = () => {
     const [project, setProject] = useState(projects[0]);
 
     const handleSlideChange = (Swiper) => {
-        // obtem o índice atual do slide
-        const currentIndex= Swiper.activeIndex;
+        // obtem o índice atual do slide { #TODO:anteriormente antes do loop: Swiper.activeIndex}
+        const currentIndex= Swiper.realIndex;
 
         // atualiza o estado do projeto com base no índice
         setProject(projects[currentIndex]);
     }
     return (
-        <motion.section
-            className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-        >
+            <motion.section
+                className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
+            >
             <div className="container mx-auto">
                 <div className="flex flex-col xl:flex-row xl:gap-[30px]">
                     <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
@@ -117,6 +118,8 @@ const Work = () => {
                     <Swiper
                     spaceBetween={30}
                     slidesPerView={1}
+                    // TODO: loop infinito 
+                    loop={true}
                     className="xl:h-[520px] mb-12"
                     onSlideChange={handleSlideChange}
                     >
@@ -125,7 +128,7 @@ const Work = () => {
                                 <SwiperSlide key={index} className="w-full">
                                     <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
                                     {/* overloy */}
-                                    <div></div>
+                                    <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                                     {/* image */}
                                     <div className="relative w-full h-full">
                                         <Image
