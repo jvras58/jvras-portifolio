@@ -14,11 +14,11 @@ const Header = () => {
                     Jvras<span className="text-accent">@</span>
                 </h1>
                 </Link>
-                {/* desktop nav && Contrate-me button*/}
+                {/* desktop nav && Converse comigo button*/}
                 <div className="hidden xl:flex items-center gap-8">
                 <Nav />
                 <Link href="/contato">
-                    <Button >Contrate</Button>
+                    <Button >Converse comigo</Button>
                 </Link>
                 </div>
                 {/* mobile nav*/}
