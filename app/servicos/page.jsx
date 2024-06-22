@@ -7,20 +7,26 @@ import Link from "next/link";
 const services = [
     {
         num:1,
-        title:"Web Development",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        title:"Desenvolvimento Back-end",
+        description:"Experiencia em desenvolvimento de APIs, utilizando Python ou Node.",
         href:""
     },
     {
         num:2,
         title:"Analise de dados",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        description:"Desenvolvimento de Scripts / dashboards para analise de dados, utilizando Python, javascript, Looker Studio ou Power BI.",
         href:""
     },
     {
         num:3,
         title:"UI/UX Design",
-        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+        description:"Experiencia em design de interfaces, utilizando as melhores práticas de usabilidade e acessibilidade com o Figma.",
+        href:""
+    },
+    {
+        num:4,
+        title:"Web Development",
+        description:"Experiencia em desenvolvimento de sites e aplicativos web, utilizando as tecnologias mais recentes do mercado.",
         href:""
     },
 
