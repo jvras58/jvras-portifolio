@@ -7,7 +7,7 @@ import { SiTailwindcss, SiNextdotjs, SiFastapi, SiFlask, SiPostgresql, SiMysql, 
 //Sobre mim
 const about = {
     title: "Sobre mim",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Engenheiro de Software com 3 anos de experiência Back-end. Brasileiro, disponível para freelancing e voluntariado.",
     info: [
         { fieldName: "Nome", fieldValue: "Jonathas Vinicius" },
         { fieldName: "Telefone", fieldValue: "(+55) 81 9 8301-9618"},
@@ -23,7 +23,7 @@ const about = {
 const experience = {
     icon: '/assets/resume/badge.svg',
     title: "Experiência",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Experiência profissional e acadêmica.",
     items: [
         {
             position: "Desenvolvedor Full Stack",
@@ -57,7 +57,7 @@ const experience = {
 const education = {
     icon: '/assets/resume/cap.svg',
     title: "Educação",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Formação acadêmica.",
     items: [
         {
             institution: "Universidade Federal de Pernambuco",
@@ -70,7 +70,7 @@ const education = {
 //Habilidades
 const skills = {
     title: "Habilidades",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Habilidades técnicas e ferramentas que utilizo.",
     skillList: [
 
         //back-end
@@ -262,9 +262,9 @@ const Resume = () => {
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
                     {about.info.map((info, index) => {
                         return (
-                            <li key={index} className="flex items-center justify-center xl:justify-start gap-2">
-                                <span className="text-white/60">{info.fieldName}</span>
-                                <span className="text-accent">{info.fieldValue}</span>
+                            <li key={index} className="flex items-center justify-center xl:justify-start gap-1">
+                                <span className="text-white/60">{info.fieldName}:</span>
+                                <span className="text-accent whitespace-nowrap">{info.fieldValue}</span>
                             </li>
                         );
                     })}
