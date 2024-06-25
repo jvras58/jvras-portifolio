@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
 import { motion } from "framer-motion";
+import axios from 'axios';
 
 const info = [
     {
@@ -34,8 +35,29 @@ const info = [
 ];
 
 const Contact = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            service: formData.get('service'),
+            message: formData.get('message'),
+        };
+
+        try {
+            await axios.post('/api/contact', data);
+            alert('Contact form submitted successfully!');
+            e.target.reset();
+        } catch (err) {
+            console.error('Failed to submit contact form:', err);
+            alert('Failed to submit contact form. Please try again.');
+        }
+    };
+
     return (
-        <motion.section 
+        <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
@@ -45,16 +67,15 @@ const Contact = () => {
                 <div className="flex flex-col xl:flex-row gap-[30px]">
                     {/* Form Section */}
                     <div className="xl:h-[54%] order-2 xl:order-none">
-                        <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+                        <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl" onSubmit={handleSubmit}>
                             <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
                             <p className="text-white/60">Entre em contato Abaixo:</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="text" placeholder="Nome" />
-                                <Input type="text" placeholder="sobrenome" />
-                                <Input type="email" placeholder="Email" />
-                                <Input type="tel" placeholder="Telefone" />
+                                <Input type="text" placeholder="Nome" name="name" />
+                                <Input type="email" placeholder="Email" name="email" />
+                                <Input type="tel" placeholder="Telefone" name="phone" />
                             </div>
-                            <Select>
+                            <Select name="service">
                                 <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Selecione o serviço" />
                                 </SelectTrigger>
@@ -68,8 +89,8 @@ const Contact = () => {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <Textarea className="h-[200px]" placeholder="Mensagem"></Textarea>
-                            <Button size="md" className="max-w-40">Enviar Mensagem</Button>
+                            <Textarea className="h-[200px]" placeholder="Mensagem" name="message"></Textarea>
+                            <Button size="md" className="max-w-40" type="submit">Enviar Mensagem</Button>
                         </form>
                     </div>
                     {/* Info Section */}
