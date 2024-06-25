@@ -3,10 +3,10 @@ const router = express.Router();
 const contactFormController = require('../controllers/contactFormController');
 
 
-// Route to handle contact form submissions
+// Rota para lidar com envios de formulários de contato
 router.post('/', contactFormController.submitContactForm);
 
-// Route to fetch all contact form submissions
+// Rota para buscar todos os envios de formulários de contato
 router.get('/', contactFormController.getAllContactForms);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const ContactForm = require('../models/ContactForm');
 
-// Controller function to handle contact form submissions
+// Função de controlador para lidar com envios de formulários de contato
 exports.submitContactForm = async (req, res) => {
   try {
     const { name, email, phone, service, message } = req.body;
@@ -12,18 +12,18 @@ exports.submitContactForm = async (req, res) => {
       message,
     });
     await newContactForm.save();
-    res.status(201).json({ message: 'Contact form submission successful' });
+    res.status(201).json({ message: 'Envio do formulário de contato realizado com sucesso' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to submit contact form' });
+    res.status(500).json({ error: 'Falha ao enviar formulário de contato' });
   }
 };
 
-// Controller function to fetch all contact form submissions
+// Função de controlador para buscar todos os envios de formulários de contato
 exports.getAllContactForms = async (req, res) => {
   try {
     const contactForms = await ContactForm.find();
     res.status(200).json(contactForms);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch contact forms' });
+    res.status(500).json({ error: 'Falha ao buscar formulários de contato' });
   }
 };

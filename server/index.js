@@ -21,4 +21,9 @@ app.use('/api/contact', contactFormRoutes);
 
 // inicia o server
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => console.log(`Server on port ${port}`));
+
+
+// configurações iniciais do mongodb no docker:
+// docker pull mongo
+// docker run --name mongodb -v mongodbdata:/data/db -p 27017:27017 -d mongo
