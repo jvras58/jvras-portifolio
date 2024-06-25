@@ -15,11 +15,8 @@ const Stats = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // TODO: colocar o nome de usuario para buscar pelo env
                 const username = "jvras58";
                 const cacheKey = `github-commits-${username}`;
-                // Para evitar sobrecarga nas requisições da Api do GitHub, vamos armazenar os dados em cache
-                // TODO: Ainda esta sobrecarregando as requisições na api do github
                 const cachedData = localStorage.getItem(cacheKey);
                 const currentTime = new Date().getTime();
                 const expiryTime = 24 * 60 * 60 * 1000;
@@ -27,18 +24,24 @@ const Stats = () => {
                 if (cachedData) {
                     const { totalCommits, timestamp } = JSON.parse(cachedData);
                     if (currentTime - timestamp < expiryTime) {
-                        setStats(prevStats => [...prevStats, { num: totalCommits, text: "Code Commits" }]);
+                        setStats(prevStats => {
+                            // Remove qualquer item anterior com "Code Commits"
+                            const filteredStats = prevStats.filter(item => item.text !== "Code Commits");
+                            return [...filteredStats, { num: totalCommits, text: "Code Commits" }];
+                        });
                         return;
                     }
                 }
 
                 const repos = await fetchUserRepos(username);
-                console.log('Repositorios buscados:', repos);
-
                 if (Array.isArray(repos)) {
                     const totalCommits = await getTotalCommits(username, repos);
                     localStorage.setItem(cacheKey, JSON.stringify({ totalCommits, timestamp: currentTime }));
-                    setStats(prevStats => [...prevStats, { num: totalCommits, text: "Code Commits" }]);
+                    setStats(prevStats => {
+                        // Remove qualquer item anterior com "Code Commits"
+                        const filteredStats = prevStats.filter(item => item.text !== "Code Commits");
+                        return [...filteredStats, { num: totalCommits, text: "Code Commits" }];
+                    });
                 } else {
                     console.error('Repositorio não é um array:', repos);
                 }
