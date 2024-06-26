@@ -47,12 +47,13 @@ const Contact = () => {
         };
 
         try {
-            await axios.post('/api/contact', data);
-            alert('Contact form submitted successfully!');
+            // FIXME: preciso que ele va sempre para a porta 8000 que é a do server é não a do front que é a 3000 padrão...
+            await axios.post('http://localhost:8000/api/contact', data);
+            alert('Formulário de contato enviado com sucesso!');
             e.target.reset();
         } catch (err) {
-            console.error('Failed to submit contact form:', err);
-            alert('Failed to submit contact form. Please try again.');
+            console.error('Falha ao enviar formulário de contato:', err);
+            alert('Falha ao enviar o formulário de contato. Por favor, tente novamente.');
         }
     };
 

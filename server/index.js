@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const contactFormRoutes = require('./routes/contactForm');
 
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://localhost/contact-form')
 .catch(err => console.log(err));
 
 // Configurar aplicativo Express
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
 
 app.get('/hello', (req, res) => {
@@ -22,7 +24,6 @@ app.use('/api/contact', contactFormRoutes);
 // inicia o server
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server on port ${port}`));
-
 
 // configurações iniciais do mongodb no docker:
 // docker pull mongo

@@ -1,17 +1,27 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Dashboard = () => {
   const [contactForms, setContactForms] = useState([]);
+  const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     const fetchContactForms = async () => {
       try {
-        const response = await axios.get('/api/contact');
+        // FIXME: preciso que ele va sempre para a porta 8000 que é a do server é não a do front que é a 3000 padrão...
+        const response = await axios.get('http://localhost:8000/api/contact');
         setContactForms(response.data);
       } catch (err) {
         console.error('Falha ao buscar formulários de contato:', err);
@@ -42,6 +52,7 @@ const Dashboard = () => {
                 <th className="py-3 px-6">Serviço</th>
                 <th className="py-3 px-6">Mensagem</th>
                 <th className="py-3 px-6">Enviado em</th>
+                <th className="py-3 px-6">Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -49,10 +60,32 @@ const Dashboard = () => {
                 <tr key={index} className="bg-white dark:bg-gray-800 border-b dark:border-gray-700">
                   <td className="py-4 px-6">{form.name}</td>
                   <td className="py-4 px-6">{form.email}</td>
-                  <td className="py-4 px-6">{form.phone}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">{form.phone}</td>
                   <td className="py-4 px-6">{form.service}</td>
-                  <td className="py-4 px-6">{form.message}</td>
+                  <td className="py-4 px-6 truncate max-w-xs">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <span 
+                          className="cursor-pointer text-blue-500 underline" 
+                          onClick={() => setSelectedMessage(form.message)}
+                        >
+                          {form.message}
+                        </span>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto p-6 bg-[#2d2d2d] rounded-lg text-white">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-bold mb-2">Mensagem Completa</DialogTitle>
+                          {/* TODO: quando a mensagem é muito grande o modal cresce com a mensagem pro lado mais preciso que seja para baixo... */}
+                          <DialogDescription className="text-base whitespace-pre-wrap break-words overflow-auto">
+                            {selectedMessage}
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </td>
                   <td className="py-4 px-6">{new Date(form.createdAt).toLocaleString()}</td>
+                  {/* TODO: Implementar ações de apagar/ mensagem já respondida */}
+                  <td className="py-4 px-6">Encerrar/deletar</td>
                 </tr>
               ))}
             </tbody>
