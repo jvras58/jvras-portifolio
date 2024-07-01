@@ -40,6 +40,11 @@ const info = [
 const ContactForm = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: zodResolver(contactFormSchema),
+        //FIXME: Estou sendo forçado a definir um valor padrão para o campo 'servico' para evitar.
+        // Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()
+        defaultValues: {
+            servico: "web" // Aqui estou definindo o valor fixo para o campo 'servico'
+        }
     });
 
     const onSubmit = async (data) => {
@@ -59,14 +64,18 @@ const ContactForm = () => {
             <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
             <p className="text-white/60">Entre em contato Abaixo:</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="text" placeholder="Nome" {...register('nome', { required: true })} error={errors.nome} />
-                <Input type="text" placeholder="sobrenome" {...register('sobrenome', { required: true })} error={errors.sobrenome} />
-                <Input type="email" placeholder="Email" {...register('email', { required: true })} error={errors.email} />
-                <Input type="tel" placeholder="Telefone" {...register('telefone', { required: true })} error={errors.telefone} />
+                <Input type="text" placeholder="Nome" {...register('nome')} className={errors.nome ? 'border-red-500' : ''} />
+                {errors.nome && <p className="text-red-500">{errors.nome.message}</p>}
+                <Input type="text" placeholder="Sobrenome" {...register('sobrenome')} className={errors.sobrenome ? 'border-red-500' : ''} />
+                {errors.sobrenome && <p className="text-red-500">{errors.sobrenome.message}</p>}
+                <Input type="email" placeholder="Email" {...register('email')} className={errors.email ? 'border-red-500' : ''} />
+                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                <Input type="tel" placeholder="Telefone" {...register('telefone')} className={errors.telefone ? 'border-red-500' : ''} />
+                {errors.telefone && <p className="text-red-500">{errors.telefone.message}</p>}
             </div>
-            <Select>
+            <Select {...register('servico')}>
                 <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Selecione o serviço" {...register('servico', { required: true })} error={errors.servico} />
+                    <SelectValue placeholder="Selecione o serviço" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectGroup>
@@ -74,11 +83,13 @@ const ContactForm = () => {
                         <SelectItem value="web">Desenvolvimento Web</SelectItem>
                         <SelectItem value="uiux">Design UI/UX</SelectItem>
                         <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
-                        <SelectItem value="data">Analise de dados (Dashboard)</SelectItem>
+                        <SelectItem value="data">Análise de dados (Dashboard)</SelectItem>
                     </SelectGroup>
                 </SelectContent>
             </Select>
-            <Textarea placeholder="Mensagem" {...register('mensagem', { required: true })} error={errors.mensagem}></Textarea>
+            {errors.servico && <p className="text-red-500">{errors.servico.message}</p>}
+            <Textarea placeholder="Mensagem" {...register('mensagem')} className={errors.mensagem ? 'border-red-500' : ''}></Textarea>
+            {errors.mensagem && <p className="text-red-500">{errors.mensagem.message}</p>}
             <Button size="md" className="max-w-40" type="submit">Enviar Mensagem</Button>
         </form>
     );
@@ -89,7 +100,7 @@ const Contact = () => {
         <motion.section 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
+            transition={{ delay: 0.4, duration: 0.4, ease: "easeIn" }}
             className="py-6"
         >
             <div className="container mx-auto">
