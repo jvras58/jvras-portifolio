@@ -2,8 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
+import { Textarea } from "@/components/ui/textarea";    
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { contactFormSchema } from "@/lib/schemas";
+import { saveContactForm } from "./action";
+import { 
     Select,
     SelectContent,
     SelectGroup,
@@ -33,6 +37,53 @@ const info = [
     }
 ];
 
+const ContactForm = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: zodResolver(contactFormSchema),
+    });
+
+    const onSubmit = async (data) => {
+        try {
+            await saveContactForm(data);
+            // Reseta quando for um sucesso
+            reset();
+            alert('Mensagem enviada com sucesso!');
+        } catch (err) {
+            console.error(err);
+            alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.');
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
+            <p className="text-white/60">Entre em contato Abaixo:</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Input type="text" placeholder="Nome" {...register('nome', { required: true })} error={errors.nome} />
+                <Input type="text" placeholder="sobrenome" {...register('sobrenome', { required: true })} error={errors.sobrenome} />
+                <Input type="email" placeholder="Email" {...register('email', { required: true })} error={errors.email} />
+                <Input type="tel" placeholder="Telefone" {...register('telefone', { required: true })} error={errors.telefone} />
+            </div>
+            <Select>
+                <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Selecione o serviço" {...register('servico', { required: true })} error={errors.servico} />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        <SelectLabel>Selecione o serviço</SelectLabel>
+                        <SelectItem value="web">Desenvolvimento Web</SelectItem>
+                        <SelectItem value="uiux">Design UI/UX</SelectItem>
+                        <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
+                        <SelectItem value="data">Analise de dados (Dashboard)</SelectItem>
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
+            <Textarea placeholder="Mensagem" {...register('mensagem', { required: true })} error={errors.mensagem}></Textarea>
+            <Button size="md" className="max-w-40" type="submit">Enviar Mensagem</Button>
+        </form>
+    );
+};
+
 const Contact = () => {
     return (
         <motion.section 
@@ -45,32 +96,7 @@ const Contact = () => {
                 <div className="flex flex-col xl:flex-row gap-[30px]">
                     {/* Form Section */}
                     <div className="xl:h-[54%] order-2 xl:order-none">
-                        <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
-                            <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
-                            <p className="text-white/60">Entre em contato Abaixo:</p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="text" placeholder="Nome" />
-                                <Input type="text" placeholder="sobrenome" />
-                                <Input type="email" placeholder="Email" />
-                                <Input type="tel" placeholder="Telefone" />
-                            </div>
-                            <Select>
-                                <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Selecione o serviço" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Selecione o serviço</SelectLabel>
-                                        <SelectItem value="web">Desenvolvimento Web</SelectItem>
-                                        <SelectItem value="uiux">Design UI/UX</SelectItem>
-                                        <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
-                                        <SelectItem value="data">Analise de dados (Dashboard)</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                            <Textarea className="h-[200px]" placeholder="Mensagem"></Textarea>
-                            <Button size="md" className="max-w-40">Enviar Mensagem</Button>
-                        </form>
+                        <ContactForm />
                     </div>
                     {/* Info Section */}
                     <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
