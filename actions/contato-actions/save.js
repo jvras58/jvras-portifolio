@@ -1,6 +1,6 @@
 "use server";
 
-import { contactFormSchema } from "@/lib/schemas";
+import { contactFormSchema } from "@/actions/contato-actions/schemas";
 import { prisma } from "@/lib/prisma";
 
 export const saveContactForm = async (data) => {
@@ -12,16 +12,6 @@ export const saveContactForm = async (data) => {
         return result;
     } catch (err) {
         console.error('Erro ao salvar o formulário de contato:', err);
-        throw err;
-    }
-};
-
-export const getContactForms = async () => {
-    try {
-        const contacts = await prisma.contato.findMany();
-        return contacts;
-    } catch (err) {
-        console.error('Erro ao recuperar os formulários de contato:', err);
         throw err;
     }
 };

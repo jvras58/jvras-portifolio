@@ -5,8 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";    
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { contactFormSchema } from "@/lib/schemas";
-import { saveContactForm } from "./action";
+import { contactFormSchema } from "@/actions/contato-actions/schemas";
+import { saveContactForm } from "@/actions/contato-actions/save";
 import { 
     Select,
     SelectContent,
