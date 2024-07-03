@@ -84,10 +84,10 @@ const ContactForm = () => {
                         <SelectContent>
                             <SelectGroup>
                                 <SelectLabel>Selecione o serviço</SelectLabel>
-                                <SelectItem value="web">Desenvolvimento Web</SelectItem>
-                                <SelectItem value="uiux">Design UI/UX</SelectItem>
-                                <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
-                                <SelectItem value="data">Análise de dados (Dashboard)</SelectItem>
+                                <SelectItem value="Dev Web">Desenvolvimento Web</SelectItem>
+                                <SelectItem value="Design UI/UX">Design UI/UX</SelectItem>
+                                <SelectItem value="Dev Back-End">Desenvolvimento Back-end</SelectItem>
+                                <SelectItem value="Analise/Dashboard">Análise de dados (Dashboard)</SelectItem>
                             </SelectGroup>
                         </SelectContent>
                     </Select>

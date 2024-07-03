@@ -28,4 +28,5 @@ model contato {
   telefone String?
   servico String?
   mensagem String?
+  createdAt DateTime @default(now())
 }
