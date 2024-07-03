@@ -1,11 +1,13 @@
 -- CreateTable
 CREATE TABLE "contato" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "nome" TEXT,
     "sobrenome" TEXT,
     "email" TEXT,
     "telefone" TEXT,
     "servico" TEXT,
     "mensagem" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "contato_pkey" PRIMARY KEY ("id")
 );
