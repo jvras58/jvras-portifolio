@@ -2,8 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
+import { Textarea } from "@/components/ui/textarea";    
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { contactFormSchema } from "@/actions/contato-actions/schemas";
+import { saveContactForm } from "@/actions/contato-actions/save";
+import { 
     Select,
     SelectContent,
     SelectGroup,
@@ -33,44 +37,83 @@ const info = [
     }
 ];
 
+const ContactForm = () => {
+    const { register, handleSubmit, formState: { errors }, reset, control } = useForm({
+        resolver: zodResolver(contactFormSchema),
+    });
+
+    const onSubmit = async (data) => {
+        try {
+            await saveContactForm(data);
+            // Reseta quando for um sucesso
+            reset();
+            alert('Mensagem enviada com sucesso!');
+        } catch (err) {
+            console.error(err);
+            alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.');
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
+            <p className="text-white/60">Entre em contato Abaixo:</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Input type="text" placeholder="Nome" {...register('nome')} className={errors.nome ? 'border-red-500' : ''} />
+                {errors.nome && <p className="text-red-500">{errors.nome.message}</p>}
+                <Input type="text" placeholder="Sobrenome" {...register('sobrenome')} className={errors.sobrenome ? 'border-red-500' : ''} />
+                {errors.sobrenome && <p className="text-red-500">{errors.sobrenome.message}</p>}
+                <Input type="email" placeholder="Email" {...register('email')} className={errors.email ? 'border-red-500' : ''} />
+                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                <Input type="tel" placeholder="Telefone" {...register('telefone')} className={errors.telefone ? 'border-red-500' : ''} />
+                {errors.telefone && <p className="text-red-500">{errors.telefone.message}</p>}
+            </div>
+            <Controller
+                name="servico"
+                control={control}
+                render={({ field: { onChange, value, name, ref } }) => (
+                    <Select
+                        name={name}
+                        onValueChange={onChange}
+                        value={value}
+                        className={errors.servico ? 'border-red-500' : ''}
+                    >
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Selecione o serviço" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectLabel>Selecione o serviço</SelectLabel>
+                                <SelectItem value="web">Desenvolvimento Web</SelectItem>
+                                <SelectItem value="uiux">Design UI/UX</SelectItem>
+                                <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
+                                <SelectItem value="data">Análise de dados (Dashboard)</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                )}
+            />
+            {errors.servico && <p className="text-red-500">{errors.servico.message}</p>}
+            <Textarea placeholder="Mensagem" {...register('mensagem')} className={errors.mensagem ? 'border-red-500' : ''}></Textarea>
+            {errors.mensagem && <p className="text-red-500">{errors.mensagem.message}</p>}
+            <Button size="md" className="max-w-40" type="submit">Enviar Mensagem</Button>
+        </form>
+    );
+};
+
 const Contact = () => {
     return (
         <motion.section 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2.4, duration: 0.4, ease: "easeIn" }}
+            transition={{ delay: 0.4, duration: 0.4, ease: "easeIn" }}
             className="py-6"
         >
             <div className="container mx-auto">
                 <div className="flex flex-col xl:flex-row gap-[30px]">
                     {/* Form Section */}
                     <div className="xl:h-[54%] order-2 xl:order-none">
-                        <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
-                            <h3 className="text-4xl text-accent">Vamos colaborar juntos.</h3>
-                            <p className="text-white/60">Entre em contato Abaixo:</p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <Input type="text" placeholder="Nome" />
-                                <Input type="text" placeholder="sobrenome" />
-                                <Input type="email" placeholder="Email" />
-                                <Input type="tel" placeholder="Telefone" />
-                            </div>
-                            <Select>
-                                <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Selecione o serviço" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Selecione o serviço</SelectLabel>
-                                        <SelectItem value="web">Desenvolvimento Web</SelectItem>
-                                        <SelectItem value="uiux">Design UI/UX</SelectItem>
-                                        <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
-                                        <SelectItem value="data">Analise de dados (Dashboard)</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                            <Textarea className="h-[200px]" placeholder="Mensagem"></Textarea>
-                            <Button size="md" className="max-w-40">Enviar Mensagem</Button>
-                        </form>
+                        <ContactForm />
                     </div>
                     {/* Info Section */}
                     <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
