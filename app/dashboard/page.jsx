@@ -12,7 +12,7 @@ DialogTitle,
 DialogTrigger,
 } from "@/components/ui/dialog";
 import { getContactForms } from "@/actions/dashboard-actions/index";
-import { deleteContactForm } from "@/actions/dashboard-actions/delete_contato";
+import { deleteContactForm } from "@/actions/dashboard-actions/delete";
 
 const Dashboard = () => {
 // Estado para armazenar os formulários de contato
