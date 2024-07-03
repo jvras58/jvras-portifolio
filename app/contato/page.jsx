@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";    
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { contactFormSchema } from "@/lib/schemas";
-import { saveContactForm } from "./action";
+import { contactFormSchema } from "@/actions/contato-actions/schemas";
+import { saveContactForm } from "@/actions/contato-actions/save";
 import { 
     Select,
     SelectContent,
@@ -38,13 +38,8 @@ const info = [
 ];
 
 const ContactForm = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset, control } = useForm({
         resolver: zodResolver(contactFormSchema),
-        //FIXME: Estou sendo forçado a definir um valor padrão para o campo 'servico' para evitar.
-        // Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()
-        defaultValues: {
-            servico: "web" // Aqui estou definindo o valor fixo para o campo 'servico'
-        }
     });
 
     const onSubmit = async (data) => {
@@ -73,20 +68,31 @@ const ContactForm = () => {
                 <Input type="tel" placeholder="Telefone" {...register('telefone')} className={errors.telefone ? 'border-red-500' : ''} />
                 {errors.telefone && <p className="text-red-500">{errors.telefone.message}</p>}
             </div>
-            <Select {...register('servico')}>
-                <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Selecione o serviço" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectLabel>Selecione o serviço</SelectLabel>
-                        <SelectItem value="web">Desenvolvimento Web</SelectItem>
-                        <SelectItem value="uiux">Design UI/UX</SelectItem>
-                        <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
-                        <SelectItem value="data">Análise de dados (Dashboard)</SelectItem>
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
+            <Controller
+                name="servico"
+                control={control}
+                render={({ field: { onChange, value, name, ref } }) => (
+                    <Select
+                        name={name}
+                        onValueChange={onChange}
+                        value={value}
+                        className={errors.servico ? 'border-red-500' : ''}
+                    >
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Selecione o serviço" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectLabel>Selecione o serviço</SelectLabel>
+                                <SelectItem value="web">Desenvolvimento Web</SelectItem>
+                                <SelectItem value="uiux">Design UI/UX</SelectItem>
+                                <SelectItem value="backend">Desenvolvimento Back-end</SelectItem>
+                                <SelectItem value="data">Análise de dados (Dashboard)</SelectItem>
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                )}
+            />
             {errors.servico && <p className="text-red-500">{errors.servico.message}</p>}
             <Textarea placeholder="Mensagem" {...register('mensagem')} className={errors.mensagem ? 'border-red-500' : ''}></Textarea>
             {errors.mensagem && <p className="text-red-500">{errors.mensagem.message}</p>}
