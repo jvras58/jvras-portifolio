@@ -9,15 +9,15 @@ generator client {
 }
 
 // TODO: Production um dia só não vai ser hoje:
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
-
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
 
 
 model contato {
@@ -28,4 +28,5 @@ model contato {
   telefone String?
   servico String?
   mensagem String?
+  createdAt DateTime @default(now())
 }
