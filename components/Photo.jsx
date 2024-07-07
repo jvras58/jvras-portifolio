@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import photo from "@/public/assets/photo.png"
 
 const Photo = () => {
     return (
@@ -24,14 +25,13 @@ const Photo = () => {
                         delay: 2.4,duration: 0.4, ease: "easeInOut"
                     },
                 }}
-            className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute">
+            className="w-[298px] overflow-hidden h-[298px] xl:w-[498px] rounded-full flex items-center xl:h-[498px] mix-blend-lighten absolute">
                 <Image
-                    src="/assets/photo.png"
+                    src={photo.src}
                     priority
                     quality={100}
                     fill
-                    alt=""
-                    className="object-contain"
+                    alt="image-profile"
                 />
             </motion.div>
             {/* Circulo */}
