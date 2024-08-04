@@ -25,7 +25,7 @@ const services = [
     },
     {
         num:4,
-        title:"Web Development",
+        title:"Desenvolvimento Web",
         description:"Experiencia em desenvolvimento de sites e aplicativos web, utilizando as tecnologias mais recentes do mercado.",
         href:""
     },

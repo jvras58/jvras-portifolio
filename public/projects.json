@@ -1,0 +1,92 @@
+[
+    {
+        "num": "1",
+        "category": "API - Estudos",
+        "title": "APi- Alocação de Espaços - Estudos",
+        "description": "API para alocação de espaços em um ambiente, com autenticação de usuários e controle de acesso.",
+        "stack": ["Python", "FastAPI", "SQLAlchemy"],
+        "image": "/assets/projetos/thumb1.png",
+        "live": "",
+        "github": "https://github.com/jvras58/FastAPi_estudos.git"
+    },
+    {
+        "num": "2",
+        "category": "API",
+        "title": "APi- FastAPI",
+        "description": "Back-end com FastAPI, incluindo autenticação de usuários, controle de acesso e controladores genéricos.",
+        "stack": ["Python", "FastAPI", "SQLAlchemy"],
+        "image": "/assets/projetos/thumb1-1.png",
+        "live": "",
+        "github": "https://github.com/jvras58/back-fastapi.git"
+    },
+    {
+        "num": "3",
+        "category": "Bot",
+        "title": "Bot - Discord",
+        "description": "Bot para discord com funcionalidades de leitura, salvamento de mensagens de organização de processos de trabalho e moderação.",
+        "stack": ["Python", "discord.py", "sqlite3"],
+        "image": "/assets/projetos/thumb2.png",
+        "live": "",
+        "github": "https://github.com/jvras58/bot-discord.git"
+    },
+    {
+        "num": "4",
+        "category": "Bot",
+        "title": "Bot - Discord",
+        "description": "Bot para discord com funcionalidades de leitura, gerenciamento de banco, rinhas, eventos de promoção e envio de dinheiro fictício (Moneyo).",
+        "stack": ["Javascript", "discord.py", "sqlite3"],
+        "image": "/assets/projetos/thumb4.png",
+        "live": "",
+        "github": "https://github.com/jvras58/banco_bot.git"
+    },
+    {
+        "num": "5",
+        "category": "full Stack project",
+        "title": "Gerenciamento de Chamados",
+        "description": "Projeto desenvolvido para estudar node.js com express onde foi desenvolvido um sistema de gerenciamento de chamados simples.",
+        "stack": ["Javascript", "express", "prisma", "mysql"],
+        "image": "/assets/projetos/thumb3.png",
+        "live": "",
+        "github": "https://gitlab.cin.ufpe.br/jvras/cinmeajuda.git"
+    },
+    {
+        "num": "6",
+        "category": "Portfólio",
+        "title": "Portfólio Pessoal",
+        "description": "Projeto desenvolvido para estudar next.js com server actions simples.",
+        "stack": ["Next.js", "prisma", "postgresql"],
+        "image": "https://neilpatel.com/wp-content/uploads/2017/12/portfolio-700x467.jpg",
+        "live": "jvras-portifolio.vercel.app",
+        "github": "https://github.com/jvras58/jvras-portifolio"
+    },
+    {
+        "num": "7",
+        "category": "Projeto full Stack ",
+        "title": "Desafio - Gerenciamento de Reclamações",
+        "description": "Projeto desenvolvido para contemplar desafio na vaga de desenvolvedor FullStack na SuperNina.",
+        "stack": ["Python", "Angular 18", "SQLAlchemy", "FastAPI"],
+        "image": "https://media.licdn.com/dms/image/D4D0BAQE0Vk9blv_0Vg/company-logo_200_200/0/1713485175195/ninamob_logo?e=1730937600&v=beta&t=tHHJwGpQAAVXHnvBPiPhae36MI6jvvSLi_p4P26lyrw",
+        "live": "",
+        "github": "https://github.com/jvras58/Desafio-FullStack-nina"
+    },
+    {
+        "num": "8",
+        "category": "Dados",
+        "title": "Desafio - Visualização de Dados",
+        "description": "Projeto desenvolvido para contemplar desafio na vaga de Estagio em visualização de dados no Cesar School.",
+        "stack": ["Python", "StreamLit", "SQLAlchemy", "Plotly", "Pandas"],
+        "image": "https://rockapps.com.br/wp-content/uploads/2020/09/fdvd.png",
+        "live": "https://cesar-desafio-tecnico.onrender.com/",
+        "github": "https://github.com/jvras58/CESAR_Desafio_Tecnico"
+    },
+    {
+        "num": "9",
+        "category": "Busca de vagas",
+        "title": "LinkedIn Job Search Bot",
+        "description": "Projeto desenvolvido para buscar vagas usando o puppeteer no LinkedIn.",
+        "stack": ["Node.js", "Puppeteer.js"],
+        "image": "https://cdn.prod.website-files.com/5e42f62100b3495a91c730f1/664c76201fc5ab434ca8fcac_What%20is%20Puppeteer_.webp"  ,
+        "live": "",
+        "github": "https://github.com/jvras58/puppeteer-search-vagas"
+    }
+]
