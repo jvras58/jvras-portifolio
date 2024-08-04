@@ -7,15 +7,15 @@ import { SiTailwindcss, SiNextdotjs, SiFastapi, SiFlask, SiPostgresql, SiMysql, 
 //Sobre mim
 const about = {
     title: "Sobre mim",
-    description: "Engenheiro de Software com 3 anos de experiência Back-end. Brasileiro, disponível para freelancing e voluntariado.",
+    description: "Engenheiro de Software com 3 anos de experiência Back-end. Brasileiro, disponível para freelancing.",
     info: [
         { fieldName: "Nome", fieldValue: "Jonathas Vinicius" },
         { fieldName: "Telefone", fieldValue: "(+55) 81 9 8301-9618"},
-        { fieldName: "Experiencia", fieldValue: "5 anos"},
+        { fieldName: "Experiencia", fieldValue: "3 anos"},
         { fieldName: "Nacionalidade", fieldValue: "Brasileiro"},
         { fieldName: "Email", fieldValue: "jonathas.vinicius@ufpe.br"},
         { fieldName: "freelancer", fieldValue: "Disponível"},
-        { fieldName: "Voluntario", fieldValue: "Hamper @SouJunior Labs"},
+
     ]
 };
 
@@ -178,7 +178,7 @@ const Resume = () => {
         {/* content */}
         <div className="min-h-[70vh] w-full">
         {/* experiencia */}
-        <TabsContent value="experience" className="w-full">
+        <TabsContent value="experience" className="w-full min-h-[400px] overflow-hidden">
             <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{experience.description}</p>
@@ -202,7 +202,7 @@ const Resume = () => {
             </div>
         </TabsContent>
         {/* educação */}
-        <TabsContent value="education" className="w-full">
+        <TabsContent value="education" className="w-full min-h-[400px] overflow-hidden">
         <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{education.description}</p>
@@ -226,7 +226,7 @@ const Resume = () => {
             </div>
         </TabsContent>
         {/* habilidades */}
-        <TabsContent value="skills" className="w-full h-full">
+        <TabsContent value="skills" className="w-full min-h-[400px] overflow-auto">
             <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
                     <h3 className="text-4xl font-bold">{skills.title}</h3>
@@ -255,7 +255,7 @@ const Resume = () => {
             </div>
         </TabsContent>
         {/* sobre mim TODO: AJUSTAR VISUALIZAÇÃO */}
-        <TabsContent value="about" className="w-full text-center xl:text-left">
+        <TabsContent value="about" className="w-full text-center xl:text-left min-h-[400px] overflow-hidden">
             <div className="flex flex-col gap-[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] tex-white/60 mx-auto xl:mx-0">{about.description}</p>
