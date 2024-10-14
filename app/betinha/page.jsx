@@ -2,16 +2,16 @@
 
 
 
-const g1 = () => {
+const betinha = () => {
     return (
         <div className="w-full h-full flex justify-center items-center">
         <iframe
-            src="https://g1.globo.com"
-            title="G1 News"
+            src="https://betinha.com"
+            title="Betinha"
             className="w-full h-[600px] border-none"
         />
         </div>
     );
 }
 
-export default g1;
+export default betinha;
